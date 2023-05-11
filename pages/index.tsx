@@ -8,8 +8,6 @@ import NextNProgress from "nextjs-progressbar";
 import {useEffect} from "react";
 import {NextPage} from "next";
 import axios from "axios";
-import fullpage from 'fullpage.js';
-import 'fullpage.js/dist/fullpage.min.css';
 
 
 
