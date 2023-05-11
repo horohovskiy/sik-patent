@@ -49,7 +49,7 @@ export default function PatentItem() {
                     </div>
                     <div className="patent-content">
                         <h2>
-                            Some Patent Title Example
+                            Protein Contact Maps AI
                         </h2>
                     </div>
                 </header>
@@ -58,7 +58,7 @@ export default function PatentItem() {
                     <div className="left-block">
                         <div className="title-block">
                             <h2>
-                                Some Patent Title Example
+                                Protein Contact Maps AI
                             </h2>
                         </div>
                         <div className="text-cont">
@@ -98,10 +98,10 @@ export default function PatentItem() {
                             <img src="/images/patent-base.png"/>
                         </div>
                         <div id="2" className="img-container">
-                            <img src="/images/patent-base.png"/>
+                            <img src="/images/ex1.png"/>
                         </div>
                         <div id="3" className="img-container">
-                            <img src="/images/patent-base.png"/>
+                            <img src="/images/ex2.png"/>
                         </div>
                         <div id="4" className="img-container">
                             <img src="/images/patent-base.png"/>

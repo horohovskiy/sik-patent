@@ -74,45 +74,54 @@ const Home: NextPage<{ data: Event[] }> = ({ data }) => {
       <main>
 
           <div className="mainSection">
-              <div className="head-container">
-                  <header className="header">
-                      <button className="mobile-menu-button" tabIndex={0}>
-                          <img src="/images/menu-but.png"/>
-                          <span className="mobile-menu-block">
-                              <a href="/" className="menu-item">Our Patents</a>
+              <div className="border-cont">
+
+                  <div className="head-container">
+                      <header className="header">
+                          <button className="mobile-menu-button" tabIndex={0}>
+                              <img src="/images/menu-but.png"/>
+                              <span className="mobile-menu-block">
+                              <a href="/" className="menu-item active">Our Patents</a>
                               <a href="/" className="menu-item">Crafts</a>
                               <a href="/" className="menu-item">Stories</a>
                               <a href="/" className="menu-item">Crafters</a>
                               <a href="/" className="menu-item">Contacts</a>
                               <a href="/" className="book-link">Book Your FREE Call</a>
                           </span>
-                      </button>
-                      <Link className="logo" href="/">
-                          <img src="/images/logo.png"/>
-                      </Link>
-                      <div className="menu-block">
-                          <Link href="/" className="menu-item">Our Patents</Link>
-                          <Link href="/" className="menu-item">Crafts</Link>
-                          <Link href="/" className="menu-item">Stories</Link>
-                          <Link href="/" className="menu-item">Crafters</Link>
-                          <Link href="/" className="menu-item">Contacts</Link>
-                          <Link href="/" className="book-link">Book Your FREE Call</Link>
-                      </div>
-                  </header>
+                          </button>
+                          <Link className="logo" href="/">
+                              <img src="/images/logo.png"/>
+                          </Link>
+                          <div className="menu-block">
+                              <Link href="/" className="menu-item active">Our Patents</Link>
+                              <Link href="/" className="menu-item">Crafts</Link>
+                              <Link href="/" className="menu-item">Stories</Link>
+                              <Link href="/" className="menu-item">Crafters</Link>
+                              <Link href="/" className="menu-item">Contacts</Link>
+                              <Link href="/" className="book-link">Book Your FREE Call</Link>
+                          </div>
+                      </header>
 
-                  <div className="mainSection-content">
-                      <h1 className="mainSection-title">
-                          We create<br/>
-                          <span>patents </span>for<br/>
-                          your It-ideas<br/>
-                          that work
-                      </h1>
-                      <a className="book-button">
-                          Book Your FREE Call
-                      </a>
-                      <img className="des-img" src="/images/main-image.png"/>
-                      <img className="mob-img" src="/images/main-image-mobile.png"/>
+                      <div className="mainSection-content">
+                          <span>
+                              <h1 className="mainSection-title">
+                                We create<br/>
+                                <span>patents </span>for<br/>
+                                your It-ideas<br/>
+                                that work
+                                </h1>
+                                <p>
+                                    Every brilliant idea has to be protected
+                                </p>
+                          </span>
+                          <a className="book-button">
+                              Book Your FREE Call
+                          </a>
+                          <img className="des-img" src="/images/main-image.png"/>
+                          <img className="mob-img" src="/images/main-image-mobile.png"/>
+                      </div>
                   </div>
+
               </div>
           </div>
 

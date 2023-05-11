@@ -13,11 +13,11 @@ $border-color: rgba(255, 255, 255, 0.47);
 
 .mobile-menu-button {
   display: none;
-  cursor: pointer;
   background-color: transparent;
   border: 0px;
   img {
     height: 20px;
+    cursor: pointer;
   }
   .mobile-menu-block {
     visibility: hidden;
@@ -25,17 +25,33 @@ $border-color: rgba(255, 255, 255, 0.47);
     top: 0;
     bottom: 0;
     left: 0;
-    width: 320px;
-    background-color: rgba(0, 0, 0, 0.72);
+    //width: 320px;
+    width: 330px;
+    background-color: rgb(0 0 0 / 93%);
     z-index: 30;
     padding-top: 40px;
-    a {
+    .menu-item {
       color: white;
-      text-align: center;
       display: block;
       font-size: 18px;
       padding: 15px 0px;
       margin-bottom: 5px;
+      text-align: start;
+      //padding-left: 100px;
+      position: relative;
+      padding-left: 22px;
+      margin-left: 66px;
+      &:before {
+        content: '';
+        position: absolute;
+        left: 0px;
+        background-image: url(/images/arrow-menu.png);
+        width: 10px;
+        height: 15px;
+        display: block;
+        background-size: cover;
+        transform: translateY(30%);
+      }
     }
     .book-link {
       max-width: 200px;
@@ -45,6 +61,7 @@ $border-color: rgba(255, 255, 255, 0.47);
       font-size: 16px;
       font-weight: 500;
       margin: 20px auto;
+      display: inline-block;
     }
   }
   &:focus-within {
@@ -55,7 +72,6 @@ $border-color: rgba(255, 255, 255, 0.47);
 }
 
 .menu-button {
-  cursor: pointer;
   background-color: transparent;
   border: 0px;
   display: inline-block;
@@ -63,6 +79,7 @@ $border-color: rgba(255, 255, 255, 0.47);
   margin-left: 10px;
   img {
     height: 20px;
+    cursor: pointer;
   }
   .mobile-menu-block {
     visibility: hidden;
@@ -70,17 +87,33 @@ $border-color: rgba(255, 255, 255, 0.47);
     top: 0;
     bottom: 0;
     left: 0;
-    width: 320px;
-    background-color: rgba(0, 0, 0, 0.72);
+    //width: 320px;
+    width: 330px;
+    background-color: rgb(0 0 0 / 93%);
     z-index: 30;
     padding-top: 40px;
-    a {
+    .menu-item {
       color: white;
-      text-align: center;
       display: block;
       font-size: 18px;
       padding: 15px 0px;
       margin-bottom: 5px;
+      text-align: start;
+      //padding-left: 100px;
+      position: relative;
+      padding-left: 22px;
+      margin-left: 66px;
+      &:before {
+        content: '';
+        position: absolute;
+        left: 0px;
+        background-image: url(/images/arrow-menu.png);
+        width: 10px;
+        height: 15px;
+        display: block;
+        background-size: cover;
+        transform: translateY(30%);
+      }
     }
     .book-link {
       max-width: 200px;
@@ -90,6 +123,7 @@ $border-color: rgba(255, 255, 255, 0.47);
       font-size: 16px;
       font-weight: 500;
       margin: 20px auto;
+      display: inline-block;
     }
   }
   &:focus-within {
@@ -103,14 +137,23 @@ $border-color: rgba(255, 255, 255, 0.47);
   height: 100vh;
   min-height: 800px;
   padding: 50px 50px 50px 50px;
+  .border-cont {
+    padding: 15px 0px;
+    border-top: 1px solid $border-color;
+    border-bottom: 1px solid $border-color;
+    height: 100%;
+  }
   .head-container {
     border: 1px solid $border-color;
     height: 100%;
+    border-bottom: 0px;
+    border-top: 0px;
     .header {
       display: flex;
       align-items: center;
       justify-content: space-between;
-      padding: 20px 50px;
+      padding: 30px 50px;
+      padding-top: 10px;
       border-bottom: 1px solid $border-color;
       .logo {
         img {
@@ -122,7 +165,7 @@ $border-color: rgba(255, 255, 255, 0.47);
           padding: 15px 20px;
           color: white;
           font-size: 18px;
-          font-weight: 300;
+          font-weight: 400;
         }
         .book-link {
           padding: 10px 15px;
@@ -132,6 +175,9 @@ $border-color: rgba(255, 255, 255, 0.47);
           font-size: 16px;
           font-weight: 500;
         }
+        .active {
+          color: #F0AF3A;
+        }
       }
     }
     .mainSection-content {
@@ -140,19 +186,32 @@ $border-color: rgba(255, 255, 255, 0.47);
       align-items: center;
       justify-content: space-around;
       h1 {
-        font-family: 'Prompt', sans-serif;
+        font-family: 'Bebas Neue', sans-serif;
         font-style: normal;
-        font-size: 60px;
-        line-height: 120%;
         text-transform: uppercase;
         color: white;
-        font-weight: 900;
         padding: 0px 50px;
         max-width: 800px;
+        font-weight: 400;
+        font-size: 80px;
+        line-height: 109%;
+        span {
+          font-family: 'Bebas Neue', sans-serif;
+          font-style: normal;
+          text-transform: uppercase;
+          font-weight: 400;
+          font-size: 80px;
+          line-height: 109%;
+          color: rgba(217, 83, 32, 0.8);
+        }
       }
-      span {
-        color: rgba(217, 83, 32, 0.8);
-        font-weight: 900;
+      p {
+        font-size: 22px;
+        color: #C1C1C1;
+        max-width: 320px;
+        padding: 20px 50px;
+        line-height: 136%;
+        font-weight: 400;
       }
       .book-button {
         display: none;
@@ -160,7 +219,7 @@ $border-color: rgba(255, 255, 255, 0.47);
         color: white;
         background: rgba(217, 83, 32, 0.8);
         font-size: 15px;
-        width: 170px;
+        width: 190px;
         margin: 0px auto;
         margin-bottom: 50px;
         font-weight: 500;
@@ -199,14 +258,18 @@ $border-color: rgba(255, 255, 255, 0.47);
       height: 100%;
       .content-container {
         border: 1px solid $border-color;
-        padding: 0px 0px;
         height: 90%;
+        padding: 0px 20px;
         h2 {
-          padding: 50px 50px;
+          font-family: 'Bebas Neue', sans-serif;
+          padding: 50px 0px;
           border-bottom: 1px solid $border-color;
           text-align: center;
           color: white;
-            font-size: 30px;
+
+          font-weight: 400;
+          font-size: 40px;
+          line-height: 120%;
         }
         h3 {
           font-size: 70px;
@@ -219,7 +282,7 @@ $border-color: rgba(255, 255, 255, 0.47);
           font-size: 1.2rem;
           color: white;
           text-align: center;
-          padding: 10px 50px;
+          padding: 10px 30px;
         }
         .main-img {
           display: block;
@@ -247,6 +310,7 @@ $border-color: rgba(255, 255, 255, 0.47);
         font-size: 40px;
         margin-top: 15px;
         text-transform: uppercase;
+        font-weight: 400;
       }
     }
     .right-block {
@@ -296,8 +360,33 @@ $border-color: rgba(255, 255, 255, 0.47);
       width: 750px;
       h2 {
         text-align: center;
-        font-size: 30px;
         color: white;
+        font-family: 'Bebas Neue', sans-serif;
+
+        font-weight: 400;
+        font-size: 40px;
+        line-height: 120%;
+        position: relative;
+        &:before {
+          position: absolute;
+          content: '';
+          left: -50px;
+          background-image: url(/images/left-arrow.png);
+          transform: translateY(40%);
+          width: 25px;
+          height: 25px;
+          background-size: cover;
+        }
+        &:after {
+          position: absolute;
+          content: '';
+          right: -50px;
+          background-image: url(/images/right-arrow.png);
+          transform: translateY(40%);
+          width: 25px;
+          height: 25px;
+          background-size: cover;
+        }
       }
     }
   }
@@ -357,15 +446,20 @@ $border-color: rgba(255, 255, 255, 0.47);
       width: 70%;
       overflow: auto;
       margin: 50px 50px;
+      margin-top: 60px;
       .img-container {
         position: sticky !important;
         top: 0px;
         display: flex;
-        margin-bottom: 150px;
+        margin-bottom: 250px;
         justify-content: center;
         img {
-          height: 700px;
+          //height: 700px;
+          //width: auto;
+
+          max-height: 600px;
           width: auto;
+          max-width: 700px;
         }
       }
     }
@@ -400,7 +494,7 @@ $border-color: rgba(255, 255, 255, 0.47);
   }
 
   .mainSection {
-    padding: 30px 30px 30px 30px;
+    padding: 20px 20px 20px 20px;
   .header {
     .menu-block {
       display: none;
@@ -415,6 +509,12 @@ $border-color: rgba(255, 255, 255, 0.47);
         margin: 40px 0px;
         font-size: 38px !important;
         padding: 0px 0px !important;
+        span {
+          font-size: 38px !important;
+        }
+      }
+      p {
+        display: none;
       }
       .book-button {
         display: block !important;
@@ -436,8 +536,10 @@ $border-color: rgba(255, 255, 255, 0.47);
     .patentItem {
       display: block;
       height: auto !important;
-      margin: 0px 50px;
-      padding: 50px 0px;
+      //margin: 0px 50px;
+      //padding: 50px 0px;
+      margin: 0px 20px;
+      padding: 20px 0px;
       border-bottom: 1px solid $border-color;
       &:last-child {
         border-bottom: 0px;
