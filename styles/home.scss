@@ -133,6 +133,27 @@ $border-color: rgba(255, 255, 255, 0.47);
     border-top: 1px solid $border-color;
     border-bottom: 1px solid $border-color;
     height: 100%;
+    position: relative;
+    .scroll-down-button {
+      position: absolute;
+      bottom: -45px;
+        left: 50%;
+        transform: translateX(-50%);
+        img {
+          height: 40px;
+          cursor: pointer;
+          padding: 10px;
+          border: 1px solid $border-color;
+        }
+    }
+    .scroll-down-text {
+      position: absolute;
+        bottom: 10px;
+        left: 50%;
+        transform: translateX(-50%);
+      font-size: 20px;
+      color: white;
+    }
   }
   .head-container {
     border: 1px solid $border-color;
@@ -216,7 +237,7 @@ $border-color: rgba(255, 255, 255, 0.47);
         font-weight: 500;
       }
       .des-img {
-        max-width: 800px;
+        max-width: 850px;
         height: auto;
         padding: 0px 50px;
       }
@@ -231,8 +252,8 @@ $border-color: rgba(255, 255, 255, 0.47);
 }
 
 
-.patent-items {
-  //height: auto;
+//.patent-items {
+//  //height: auto;
   .patentItem {
     display: flex;
     height: 100vh;
@@ -315,7 +336,7 @@ $border-color: rgba(255, 255, 255, 0.47);
         }
     }
   }
-}
+//}
 
 
 
@@ -423,11 +444,13 @@ $border-color: rgba(255, 255, 255, 0.47);
           text-align: center;
           padding: 20px 0px;
           color: white;
-          background: #D95320;
           font-size: 20px;
           font-weight: 500;
           text-transform: uppercase;
-          border: 1px solid $border-color;
+          border: 1px solid #D95320;
+        }
+        .sp-link {
+          background: #D95320;
         }
       }
     }
@@ -484,6 +507,10 @@ $border-color: rgba(255, 255, 255, 0.47);
     display: block !important;
   }
 
+  .scroll-down-button {
+    display: none;
+  }
+
   .mainSection {
     padding: 20px 20px 20px 20px;
   .header {
@@ -522,8 +549,8 @@ $border-color: rgba(255, 255, 255, 0.47);
 
 
 
-  .patent-items {
-    height: auto;
+  //.patent-items {
+  //  height: auto;
     .patentItem {
       display: block;
       height: auto !important;
@@ -560,7 +587,7 @@ $border-color: rgba(255, 255, 255, 0.47);
         display: none !important;
       }
     }
-  }
+  //}
 
 
 

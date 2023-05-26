@@ -8,9 +8,8 @@ import NextNProgress from "nextjs-progressbar";
 import {NextPage} from "next";
 import axios from "axios";
 
-import React, { useRef, useEffect } from 'react';
-// import { ScrollSnap } from 'react-scroll-snap';
-import ScrollSnap from '@/components/ScrollSnap';
+import React, { useEffect, useRef, useState } from 'react';
+
 
 
 
@@ -70,20 +69,69 @@ const Home: React.FC = () => {
     //     };
     // }, []);
 
-    const containerRef = useRef<HTMLDivElement>(null);
+
+
+    // useEffect(() => {
+    //     const scrollContainer = document.querySelector('.scroll-container') as HTMLElement;
+    //     const scrollSections = document.querySelectorAll('.scroll-section');
+    //     let currentIndex = 0;
+    //     let scrollInterval: NodeJS.Timeout;
+    //
+    //     const scrollToNextSection = () => {
+    //         currentIndex = (currentIndex + 1) % scrollSections.length;
+    //         scrollContainer.scrollTo({
+    //             top: scrollSections[currentIndex].getBoundingClientRect().top + scrollContainer.scrollTop,
+    //             behavior: 'smooth',
+    //         });
+    //     };
+    //
+    //     scrollInterval = setInterval(scrollToNextSection, 5000);
+    //
+    //     return () => {
+    //         clearInterval(scrollInterval);
+    //     };
+    // }, []);
+
+
+
+
+    const scrollContainerRef = useRef<HTMLDivElement>(null);
 
     useEffect(() => {
-        const interval = setInterval(() => {
-            if (containerRef.current) {
-                const nextSectionIndex = (containerRef.current.scrollLeft / window.innerWidth + 1) % containerRef.current.childElementCount;
-                containerRef.current.scrollTo({
-                    left: nextSectionIndex * window.innerWidth,
-                    behavior: 'smooth',
-                });
-            }
-        }, 5000);
+        const scrollContainer = scrollContainerRef.current;
 
-        return () => clearInterval(interval);
+        const scrollSections = Array.from(document.querySelectorAll('.scroll-section'));
+
+        let currentIndex = 0;
+        let scrollInterval: NodeJS.Timeout;
+
+        const scrollToNextSection = () => {
+            currentIndex = (currentIndex + 1) % scrollSections.length;
+            scrollContainer.scrollTo({
+                top: scrollSections[currentIndex].getBoundingClientRect().top + scrollContainer.scrollTop,
+                behavior: 'smooth',
+            });
+        };
+
+        scrollInterval = setInterval(scrollToNextSection, 5000);
+
+        const handleScroll = () => {
+            const sectionTops = scrollSections.map(section => section.getBoundingClientRect().top);
+            const currentSectionIndex = sectionTops.findIndex(top => top >= 0);
+
+            if (currentSectionIndex !== -1) {
+                currentIndex = currentSectionIndex;
+                clearInterval(scrollInterval);
+                scrollInterval = setInterval(scrollToNextSection, 5000);
+            }
+        };
+
+        scrollContainer.addEventListener('scroll', handleScroll);
+
+        return () => {
+            clearInterval(scrollInterval);
+            scrollContainer.removeEventListener('scroll', handleScroll);
+        };
     }, []);
 
 
@@ -115,7 +163,7 @@ const Home: React.FC = () => {
 
           {/*    className="scroll-container patent-items container-sp"*/}
 
-          <div className="patent-items scroll-container">
+          <div className="scroll-container" ref={scrollContainerRef}>
 
               <section className="mainSection scroll-section">
                   <div className="border-cont">
@@ -166,92 +214,108 @@ const Home: React.FC = () => {
                           </div>
                       </div>
 
+                      <p className="scroll-down-text">Scroll For More</p>
+
+                      <a href="#first-section" className="scroll-down-button">
+                          <img src="/images/scroll-down.png"/>
+                      </a>
+
                   </div>
               </section>
 
-              <section className="patentItem section  scroll-section">
-                  <div className="left-block">
-                      <div className="content-container">
-                          <h2>
-                              Protein Contact Maps AI
-                          </h2>
 
-                          <h3>
-                              1
-                          </h3>
-                          <p>
-                              The use of machine learning to predict the spatial arrangement of protein residues from their sequence information.
-                          </p>
-                          <img className="main-img" src="/images/patent.png"/>
 
+              <section id="first-section" className="scroll-section">
+                  <div className="patentItem">
+                      <div className="left-block">
+                          <div className="content-container">
+                              <h2>
+                                  Protein Contact Maps AI
+                              </h2>
+
+                              <h3>
+                                  1
+                              </h3>
+                              <p>
+                                  The use of machine learning to predict the spatial arrangement of protein residues from their sequence information.
+                              </p>
+                              <img className="main-img" src="/images/patent.png"/>
+
+                          </div>
+                          <div className="patent-mob-image">
+                              <img src="/images/patent-img.png"/>
+                          </div>
+                          <a href="/patent-item" className="learn-more">
+                              Learn More
+                          </a>
                       </div>
-                      <div className="patent-mob-image">
+                      <div className="right-block">
                           <img src="/images/patent-img.png"/>
                       </div>
-                      <a href="/patent-item" className="learn-more">
-                          Learn More
-                      </a>
-                  </div>
-                  <div className="right-block">
-                    <img src="/images/patent-img.png"/>
                   </div>
               </section>
 
-              <section className="patentItem section  scroll-section">
-                  <div className="left-block">
-                      <div className="content-container">
-                          <h2>
-                              Protein Contact Maps AI
-                          </h2>
+              <section className="scroll-section">
+                  <div className="patentItem">
+                      <div className="left-block">
+                          <div className="content-container">
+                              <h2>
+                                  Protein Contact Maps AI
+                              </h2>
 
-                          <h3>
-                              2
-                          </h3>
-                          <p>
-                              The use of machine learning to predict the spatial arrangement of protein residues from their sequence information.
-                          </p>
-                          <img className="main-img" src="/images/patent.png"/>
+                              <h3>
+                                  2
+                              </h3>
+                              <p>
+                                  The use of machine learning to predict the spatial arrangement of protein residues from their sequence information.
+                              </p>
+                              <img className="main-img" src="/images/patent.png"/>
 
+                          </div>
+                          <div className="patent-mob-image">
+                              <img src="/images/patent-img.png"/>
+                          </div>
+                          <a href="/patent-item" className="learn-more">
+                              Learn More
+                          </a>
                       </div>
-                      <div className="patent-mob-image">
+                      <div className="right-block">
                           <img src="/images/patent-img.png"/>
                       </div>
-                      <a href="/patent-item" className="learn-more">
-                          Learn More
-                      </a>
-                  </div>
-                  <div className="right-block">
-                      <img src="/images/patent-img.png"/>
                   </div>
               </section>
 
-              <section className="patentItem section  scroll-section">
-                  <div className="left-block">
-                      <div className="content-container">
-                          <h2>
-                              Protein Contact Maps AI
-                          </h2>
+              <section className="scroll-section">
+                  <div className="patentItem">
+                      <div className="left-block">
+                          <div className="content-container">
+                              <h2>
+                                  Protein Contact Maps AI
+                              </h2>
 
-                          <h3>
-                              3
-                          </h3>
-                          <p>
-                              The use of machine learning to predict the spatial arrangement of protein residues from their sequence information.
-                          </p>
-                          <img className="main-img" src="/images/patent.png"/>
+                              <h3>
+                                  3
+                              </h3>
+                              <p>
+                                  The use of machine learning to predict the spatial arrangement of protein residues from their sequence information.
+                              </p>
+                              <img className="main-img" src="/images/patent.png"/>
 
+                          </div>
+                          <div className="patent-mob-image">
+                              <img src="/images/patent-img.png"/>
+                          </div>
+                          <a href="/patent-item" className="learn-more">
+                              Learn More
+                          </a>
                       </div>
-                      <div className="patent-mob-image">
+                      <div className="right-block">
                           <img src="/images/patent-img.png"/>
                       </div>
-                      <a href="/patent-item" className="learn-more">
-                          Learn More
-                      </a>
-                  </div>
-                  <div className="right-block">
-                      <img src="/images/patent-img.png"/>
                   </div>
               </section>
+
+
 
           </div>
 

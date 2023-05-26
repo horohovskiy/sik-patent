@@ -79,17 +79,18 @@ export default function PatentItem() {
 
                         <div className="buttons-cont">
                             <a href="#1" className="link-button">
-                                FIGURES
+                                annotation
                             </a>
                             <a href="#2" className="link-button">
                                 article
                             </a>
                             <a href="#3" className="link-button">
+                                FIGURES
+                            </a>
+                            <a href="#4" className="link-button sp-link">
                                 claims
                             </a>
-                            <a href="#4" className="link-button">
-                                annotation
-                            </a>
+
                         </div>
                     </div>
 
@@ -103,10 +104,10 @@ export default function PatentItem() {
                         <div id="3" className="img-container">
                             <img src="/images/patent-base.png"/>
                         </div>
-                        <div id="5" className="img-container">
+                        <div id="4" className="img-container">
                             <img src="/images/ex2.png"/>
                         </div>
-                        <div id="4" className="img-container">
+                        <div id="5" className="img-container">
                             <img src="/images/patent-base.png"/>
                         </div>
                     </div>

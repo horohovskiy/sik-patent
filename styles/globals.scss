@@ -37,15 +37,16 @@ p {
 
 .scroll-container {
   //scroll-snap-type: y proximity;
-  //overflow-y: scroll;
+  scroll-snap-type: y mandatory;
+  overflow-y: scroll;
+  height: 100vh;
+  scroll-behavior: smooth;
 
-  scroll-snap-type: proximity;
-  scroll-snap-points-y: repeat(100vh);
-  scroll-snap-type: y proximity;
 }
 
 .scroll-section {
   scroll-snap-align: start;
-  height: 100vh !important;
+  height: 100vh;
   scroll-behavior: smooth;
+  display: block;
 }
