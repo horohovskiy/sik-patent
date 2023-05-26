@@ -61,7 +61,7 @@ export default function PatentItem() {
                                 Protein Contact Maps AI
                             </h2>
                         </div>
-                        <div className="text-cont">
+                        <div className="text-cont" id="bord">
                             <h3>Invention</h3>
                             <p>
                                 Protein Contact Maps AI uses AI to predict protein structures with high accuracy. This breakthrough technology enables scientists to better understand protein function and develop new drugs for diseases such as cancer and Alzheimer's.

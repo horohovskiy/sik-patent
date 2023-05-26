@@ -159,7 +159,7 @@ const Home: React.FC = () => {
             });
         };
 
-        scrollInterval = setInterval(scrollToNextSection, 5000);
+        scrollInterval = setInterval(scrollToNextSection, 3000);
 
         const handleScroll = () => {
             const sectionTops = scrollSections.map(section => section.getBoundingClientRect().top);
@@ -168,7 +168,7 @@ const Home: React.FC = () => {
             if (currentSectionIndex !== -1) {
                 currentIndex = currentSectionIndex;
                 clearInterval(scrollInterval);
-                scrollInterval = setInterval(scrollToNextSection, 5000);
+                scrollInterval = setInterval(scrollToNextSection, 3000);
             }
         };
 
