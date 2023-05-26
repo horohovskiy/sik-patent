@@ -1,15 +1,6 @@
 $border-color: rgba(255, 255, 255, 0.47);
 
-//.container-sp {
-//  height: 100vh;
-//  overflow-y: scroll;
-//  scroll-snap-type: y mandatory;
-//}
-//
-//.section-sp {
-//  height: 100vh;
-//  scroll-snap-align: start;
-//}
+
 
 .mobile-menu-button {
   display: none;
@@ -241,7 +232,7 @@ $border-color: rgba(255, 255, 255, 0.47);
 
 
 .patent-items {
-  height: auto;
+  //height: auto;
   .patentItem {
     display: flex;
     height: 100vh;

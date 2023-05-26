@@ -95,12 +95,15 @@ export default function PatentItem() {
 
                     <div className="right-block">
                         <div id="1" className="img-container">
-                            <img src="/images/patent-base.png"/>
+                            <img src="/images/ex2.png"/>
                         </div>
                         <div id="2" className="img-container">
                             <img src="/images/ex1.png"/>
                         </div>
                         <div id="3" className="img-container">
+                            <img src="/images/patent-base.png"/>
+                        </div>
+                        <div id="5" className="img-container">
                             <img src="/images/ex2.png"/>
                         </div>
                         <div id="4" className="img-container">

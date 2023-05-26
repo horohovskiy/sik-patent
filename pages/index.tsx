@@ -5,14 +5,21 @@ import styles from '@/styles/Home.module.css'
 import Link from "next/link";
 import { useRouter } from "next/router";
 import NextNProgress from "nextjs-progressbar";
-import {useEffect} from "react";
 import {NextPage} from "next";
 import axios from "axios";
+
+import React, { useRef, useEffect } from 'react';
+// import { ScrollSnap } from 'react-scroll-snap';
+import ScrollSnap from '@/components/ScrollSnap';
+
+
+
 
 
 
 // export default function Home({data}) {
-const Home: NextPage<{ data: Event[] }> = ({ data }) => {
+// const Home: NextPage<{ data: Event[] }> = ({ data }) => {
+const Home: React.FC = () => {
 // const Home: NextPage<Props> = ({ data }) => {
 
     const router = useRouter();
@@ -63,6 +70,24 @@ const Home: NextPage<{ data: Event[] }> = ({ data }) => {
     //     };
     // }, []);
 
+    const containerRef = useRef<HTMLDivElement>(null);
+
+    useEffect(() => {
+        const interval = setInterval(() => {
+            if (containerRef.current) {
+                const nextSectionIndex = (containerRef.current.scrollLeft / window.innerWidth + 1) % containerRef.current.childElementCount;
+                containerRef.current.scrollTo({
+                    left: nextSectionIndex * window.innerWidth,
+                    behavior: 'smooth',
+                });
+            }
+        }, 5000);
+
+        return () => clearInterval(interval);
+    }, []);
+
+
+
   return (
     <>
       <Head>
@@ -73,14 +98,33 @@ const Home: NextPage<{ data: Event[] }> = ({ data }) => {
       </Head>
       <main>
 
-          <div className="mainSection">
-              <div className="border-cont">
 
-                  <div className="head-container">
-                      <header className="header">
-                          <button className="mobile-menu-button" tabIndex={0}>
-                              <img src="/images/menu-but.png"/>
-                              <span className="mobile-menu-block">
+
+          {/*{data.map(( item ) => (*/}
+          {/*    <div className="patentSection" key={item.id}>*/}
+          {/*        {item.Title}*/}
+          {/*    </div>*/}
+          {/*))}*/}
+
+
+
+
+
+
+
+
+          {/*    className="scroll-container patent-items container-sp"*/}
+
+          <div className="patent-items scroll-container">
+
+              <section className="mainSection scroll-section">
+                  <div className="border-cont">
+
+                      <div className="head-container">
+                          <header className="header">
+                              <button className="mobile-menu-button" tabIndex={0}>
+                                  <img src="/images/menu-but.png"/>
+                                  <span className="mobile-menu-block">
                               <a href="/" className="menu-item active">Our Patents</a>
                               <a href="/" className="menu-item">Crafts</a>
                               <a href="/" className="menu-item">Stories</a>
@@ -88,21 +132,21 @@ const Home: NextPage<{ data: Event[] }> = ({ data }) => {
                               <a href="/" className="menu-item">Contacts</a>
                               <a href="/" className="book-link">Book Your FREE Call</a>
                           </span>
-                          </button>
-                          <Link className="logo" href="/">
-                              <img src="/images/logo.png"/>
-                          </Link>
-                          <div className="menu-block">
-                              <Link href="/" className="menu-item active">Our Patents</Link>
-                              <Link href="/" className="menu-item">Crafts</Link>
-                              <Link href="/" className="menu-item">Stories</Link>
-                              <Link href="/" className="menu-item">Crafters</Link>
-                              <Link href="/" className="menu-item">Contacts</Link>
-                              <Link href="/" className="book-link">Book Your FREE Call</Link>
-                          </div>
-                      </header>
+                              </button>
+                              <Link className="logo" href="/">
+                                  <img src="/images/logo.png"/>
+                              </Link>
+                              <div className="menu-block">
+                                  <Link href="/" className="menu-item active">Our Patents</Link>
+                                  <Link href="/" className="menu-item">Crafts</Link>
+                                  <Link href="/" className="menu-item">Stories</Link>
+                                  <Link href="/" className="menu-item">Crafters</Link>
+                                  <Link href="/" className="menu-item">Contacts</Link>
+                                  <Link href="/" className="book-link">Book Your FREE Call</Link>
+                              </div>
+                          </header>
 
-                      <div className="mainSection-content">
+                          <div className="mainSection-content">
                           <span>
                               <h1 className="mainSection-title">
                                 We create<br/>
@@ -114,26 +158,18 @@ const Home: NextPage<{ data: Event[] }> = ({ data }) => {
                                     Every brilliant idea has to be protected
                                 </p>
                           </span>
-                          <a className="book-button">
-                              Book Your FREE Call
-                          </a>
-                          <img className="des-img" src="/images/main-image.png"/>
-                          <img className="mob-img" src="/images/main-image-mobile.png"/>
+                              <a className="book-button">
+                                  Book Your FREE Call
+                              </a>
+                              <img className="des-img" src="/images/main-image.png"/>
+                              <img className="mob-img" src="/images/main-image-mobile.png"/>
+                          </div>
                       </div>
+
                   </div>
+              </section>
 
-              </div>
-          </div>
-
-          {/*{data.map(( item ) => (*/}
-          {/*    <div className="patentSection" key={item.id}>*/}
-          {/*        {item.Title}*/}
-          {/*    </div>*/}
-          {/*))}*/}
-
-          <div className="patent-items container-sp" id="fullpage">
-
-              <div className="patentItem section">
+              <section className="patentItem section  scroll-section">
                   <div className="left-block">
                       <div className="content-container">
                           <h2>
@@ -159,9 +195,9 @@ const Home: NextPage<{ data: Event[] }> = ({ data }) => {
                   <div className="right-block">
                     <img src="/images/patent-img.png"/>
                   </div>
-              </div>
+              </section>
 
-              <div className="patentItem section">
+              <section className="patentItem section  scroll-section">
                   <div className="left-block">
                       <div className="content-container">
                           <h2>
@@ -187,9 +223,9 @@ const Home: NextPage<{ data: Event[] }> = ({ data }) => {
                   <div className="right-block">
                       <img src="/images/patent-img.png"/>
                   </div>
-              </div>
+              </section>
 
-              <div className="patentItem section">
+              <section className="patentItem section  scroll-section">
                   <div className="left-block">
                       <div className="content-container">
                           <h2>
@@ -215,7 +251,7 @@ const Home: NextPage<{ data: Event[] }> = ({ data }) => {
                   <div className="right-block">
                       <img src="/images/patent-img.png"/>
                   </div>
-              </div>
+              </section>
 
           </div>
 

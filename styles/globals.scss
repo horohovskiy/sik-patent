@@ -34,3 +34,18 @@ p {
   padding: 0;
   color: #6c747a;
 }
+
+.scroll-container {
+  //scroll-snap-type: y proximity;
+  //overflow-y: scroll;
+
+  scroll-snap-type: proximity;
+  scroll-snap-points-y: repeat(100vh);
+  scroll-snap-type: y proximity;
+}
+
+.scroll-section {
+  scroll-snap-align: start;
+  height: 100vh !important;
+  scroll-behavior: smooth;
+}
