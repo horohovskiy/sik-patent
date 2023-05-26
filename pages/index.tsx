@@ -95,10 +95,56 @@ const Home: React.FC = () => {
 
 
 
+    // const scrollContainerRef = useRef<HTMLDivElement>(null);
+    //
+    // useEffect(() => {
+    //     const scrollContainer = scrollContainerRef.current;
+    //
+    //     const scrollSections = Array.from(document.querySelectorAll('.scroll-section'));
+    //
+    //     let currentIndex = 0;
+    //     let scrollInterval: NodeJS.Timeout;
+    //
+    //     const scrollToNextSection = () => {
+    //         currentIndex = (currentIndex + 1) % scrollSections.length;
+    //         scrollContainer.scrollTo({
+    //             top: scrollSections[currentIndex].getBoundingClientRect().top + scrollContainer.scrollTop,
+    //             behavior: 'smooth',
+    //         });
+    //     };
+    //
+    //     scrollInterval = setInterval(scrollToNextSection, 5000);
+    //
+    //     const handleScroll = () => {
+    //         const sectionTops = scrollSections.map(section => section.getBoundingClientRect().top);
+    //         const currentSectionIndex = sectionTops.findIndex(top => top >= 0);
+    //
+    //         if (currentSectionIndex !== -1) {
+    //             currentIndex = currentSectionIndex;
+    //             clearInterval(scrollInterval);
+    //             scrollInterval = setInterval(scrollToNextSection, 5000);
+    //         }
+    //     };
+    //
+    //     scrollContainer.addEventListener('scroll', handleScroll);
+    //
+    //     return () => {
+    //         clearInterval(scrollInterval);
+    //         scrollContainer.removeEventListener('scroll', handleScroll);
+    //     };
+    // }, []);
+
+
+
+
     const scrollContainerRef = useRef<HTMLDivElement>(null);
 
     useEffect(() => {
         const scrollContainer = scrollContainerRef.current;
+
+        if (!scrollContainer) {
+            return; // Exit early if scrollContainer is null
+        }
 
         const scrollSections = Array.from(document.querySelectorAll('.scroll-section'));
 
@@ -108,7 +154,7 @@ const Home: React.FC = () => {
         const scrollToNextSection = () => {
             currentIndex = (currentIndex + 1) % scrollSections.length;
             scrollContainer.scrollTo({
-                top: scrollSections[currentIndex].getBoundingClientRect().top + scrollContainer.scrollTop,
+                top: scrollSections[currentIndex]?.getBoundingClientRect().top + scrollContainer.scrollTop,
                 behavior: 'smooth',
             });
         };
