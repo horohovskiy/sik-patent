@@ -26,13 +26,16 @@ html {
 h1, h2, h3, h4, h5 {
   margin: 0;
   padding: 0;
-  color: #444;
+color: #ffffff !important;
 }
 
 p {
   margin: 0;
   padding: 0;
-  color: #6c747a;
+  color: #ffffff !important;
+}
+div, span {
+  color: #ffffff !important;
 }
 
 .scroll-container {

@@ -2,6 +2,9 @@ import type { AppProps } from 'next/app'
 
 import '../styles/globals.scss'
 import '../styles/home.scss'
+import '../styles/crafters.scss'
+import '../styles/crafts.scss'
+import '../styles/contact.scss'
 
 //fetching data from api
 import {useEffect} from "react";
