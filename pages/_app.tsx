@@ -5,6 +5,7 @@ import '../styles/home.scss'
 import '../styles/crafters.scss'
 import '../styles/crafts.scss'
 import '../styles/contact.scss'
+import '../styles/stories.scss'
 
 //fetching data from api
 import {useEffect} from "react";

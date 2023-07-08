@@ -4,6 +4,9 @@
 @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@100;200;300;400;500;600;700;800;900&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap');
 
+$border-color: rgba(255, 255, 255, 0.47);
+
+
 body, * {
   box-sizing: border-box;
   margin: 0;
@@ -52,4 +55,137 @@ div, span {
   height: 100vh;
   scroll-behavior: smooth;
   display: block;
+}
+
+
+.footer {
+  max-width: 1600px;
+  padding: 50px 50px;
+  margin: 0px auto;
+  .main-footer-block {
+    padding: 80px 80px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border: 1px solid $border-color;
+    .logo-side {
+      max-width: 250px;
+      img {
+        height: 70px;
+        display: block;
+        //margin: 0px auto;
+      }
+      p {
+        margin-top: 20px;
+        font-size: 18px;
+      }
+    }
+    .footer-content {
+      max-width: 400px;
+      display: flex;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      .footer-link {
+        width: 50%;
+        font-size: 18px;
+        color: white;
+        margin-bottom: 10px;
+      }
+      .book {
+        color: #D95320;
+      }
+    }
+    .social-side {
+      .soc-icons {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 15px;
+        margin-top: 20px;
+        img {
+          height: 50px;
+        }
+      }
+    }
+  }
+  .footer-addition {
+    padding: 0px 0px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border: 1px solid $border-color;
+    border-bottom: 0px;
+    .add-content {
+      max-width: 800px;
+      padding: 30px 80px;
+      h2 {
+        font-family: 'Bebas Neue', sans-serif;
+        font-size: 60px;
+        text-transform: uppercase;
+      }
+      p {
+        font-size: 18px;
+        margin-top: 20px;
+      }
+      .link {
+        display: block;
+        max-width: 300px;
+        padding: 15px 20px;
+        background-color: #D95320;
+        color: white;
+        text-align: center;
+        margin-top: 40px;
+      }
+    }
+    img {
+      max-width: 500px;
+    }
+  }
+}
+
+
+@media only screen and (max-width: 1200px) {
+
+  .footer {
+
+    .main-footer-block {
+      padding: 30px 30px;
+      flex-direction: column !important;
+      align-items: center !important;
+      justify-content: center !important;
+      gap: 30px;
+      .logo-side {
+        img {
+          margin: 0px auto;
+        }
+        p {
+          text-align: center;
+        }
+      }
+      .footer-content {
+        .footer-link {
+          text-align: center;
+        }
+      }
+    }
+
+    .footer-addition {
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      .add-content {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        padding: 30px 30px;
+        h2 {
+          text-align: center;
+        }
+      }
+      img {
+        max-width: 100%;
+      }
+    }
+  }
+
 }

@@ -1,8 +1,13 @@
 import Link from "next/link";
 import React from "react";
 import Head from "next/head";
+import {useRouter} from 'next/router'
+
 
 const Header: React.FC = () => {
+
+    const router = useRouter();
+
     return (
         <header className="header">
             <button className="mobile-menu-button" tabIndex={0}>
@@ -20,11 +25,11 @@ const Header: React.FC = () => {
                 <img src="/images/logo.png"/>
             </Link>
             <div className="menu-block">
-                <Link href="/" className="menu-item">Our Patents</Link>
-                <Link href="/crafts" className="menu-item">Crafts</Link>
-                <Link href="/stories" className="menu-item">Stories</Link>
-                <Link href="/crafters" className="menu-item">Crafters</Link>
-                <Link href="/contact" className="menu-item">Contact Us</Link>
+                <Link href="/" className={router.pathname == "/" ? "menu-item active" : "menu-item"}>Our Patents</Link>
+                <Link href="/crafts" className={router.pathname == "/crafts" ? "menu-item active" : "menu-item"}>Crafts</Link>
+                <Link href="/stories" className={router.pathname == "/stories" ? "menu-item active" : "menu-item"}>Stories</Link>
+                <Link href="/crafters" className={router.pathname == "/crafters" ? "menu-item active" : "menu-item"}>Crafters</Link>
+                <Link href="/contact" className={router.pathname == "/contact" ? "menu-item active" : "menu-item"}>Contact Us</Link>
                 <Link href="/" className="book-link">Book Your FREE Call</Link>
             </div>
         </header>

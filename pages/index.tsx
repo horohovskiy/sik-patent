@@ -12,17 +12,17 @@ import Header from "@/components/header";
 import React, { useEffect, useRef, useState } from 'react';
 
 
-// type PatentItem = {
-//     id: number;
-//     attributes: {
-//         Title: string;
-//         ShortDescription: string;
-//     };
-// };
-//
-// type ApiResponse = {
-//     data: PatentItem[];
-// };
+type PatentItem = {
+    id: number;
+    attributes: {
+        Title: string;
+        ShortDescription: string;
+    };
+};
+
+type ApiResponse = {
+    data: PatentItem[];
+};
 
 
 const fetchData = async () => {
@@ -38,65 +38,51 @@ const fetchData = async () => {
 
 
 
-// export default function Home({data}) {
-// const Home: NextPage<{ data: Event[] }> = ({ data }) => {
-
-
-// const Home: NextPage<Props> = ({ data }) => {
-
 const Home: React.FC = () => {
 
-    const router = useRouter();
-
-
-
-
-    const scrollContainerRef = useRef<HTMLDivElement>(null);
-
-    useEffect(() => {
-        const scrollContainer = scrollContainerRef.current;
-
-        if (!scrollContainer) {
-            return; // Exit early if scrollContainer is null
-        }
-
-        const scrollSections = Array.from(document.querySelectorAll('.scroll-section'));
-
-        let currentIndex = 0;
-        let scrollInterval: NodeJS.Timeout;
-
-        const scrollToNextSection = () => {
-            currentIndex = (currentIndex + 1) % scrollSections.length;
-            scrollContainer.scrollTo({
-                top: scrollSections[currentIndex]?.getBoundingClientRect().top + scrollContainer.scrollTop,
-                behavior: 'smooth',
-            });
-        };
-
-        scrollInterval = setInterval(scrollToNextSection, 3000);
-
-        const handleScroll = () => {
-            const sectionTops = scrollSections.map(section => section.getBoundingClientRect().top);
-            const currentSectionIndex = sectionTops.findIndex(top => top >= 0);
-
-            if (currentSectionIndex !== -1) {
-                currentIndex = currentSectionIndex;
-                clearInterval(scrollInterval);
-                scrollInterval = setInterval(scrollToNextSection, 3000);
-            }
-        };
-
-        scrollContainer.addEventListener('scroll', handleScroll);
-
-        return () => {
-            clearInterval(scrollInterval);
-            scrollContainer.removeEventListener('scroll', handleScroll);
-        };
-    }, []);
-
-
-
-
+    // const router = useRouter();
+    // const scrollContainerRef = useRef<HTMLDivElement>(null);
+    //
+    // useEffect(() => {
+    //     const scrollContainer = scrollContainerRef.current;
+    //
+    //     if (!scrollContainer) {
+    //         return; // Exit early if scrollContainer is null
+    //     }
+    //
+    //     const scrollSections = Array.from(document.querySelectorAll('.scroll-section'));
+    //
+    //     let currentIndex = 0;
+    //     let scrollInterval: NodeJS.Timeout;
+    //
+    //     const scrollToNextSection = () => {
+    //         currentIndex = (currentIndex + 1) % scrollSections.length;
+    //         scrollContainer.scrollTo({
+    //             top: scrollSections[currentIndex]?.getBoundingClientRect().top + scrollContainer.scrollTop,
+    //             behavior: 'smooth',
+    //         });
+    //     };
+    //
+    //     scrollInterval = setInterval(scrollToNextSection, 3000);
+    //
+    //     const handleScroll = () => {
+    //         const sectionTops = scrollSections.map(section => section.getBoundingClientRect().top);
+    //         const currentSectionIndex = sectionTops.findIndex(top => top >= 0);
+    //
+    //         if (currentSectionIndex !== -1) {
+    //             currentIndex = currentSectionIndex;
+    //             clearInterval(scrollInterval);
+    //             scrollInterval = setInterval(scrollToNextSection, 3000);
+    //         }
+    //     };
+    //
+    //     scrollContainer.addEventListener('scroll', handleScroll);
+    //
+    //     return () => {
+    //         clearInterval(scrollInterval);
+    //         scrollContainer.removeEventListener('scroll', handleScroll);
+    //     };
+    // }, []);
 
 
     // API CALLBACK
@@ -116,16 +102,69 @@ const Home: React.FC = () => {
         fetchItems();
     }, []);
 
-    const getFullImageUrl = (url) => {
+    const getFullImageUrl = (url: string) => {
         return `http://localhost:1337${url}`;
     };
 
-    const slugify = (text) => {
+    const slugify = (text: string) => {
         return text.toString().toLowerCase().trim()
             .replace(/&/g, '-and-')
             .replace(/[\s\W-]+/g, '-');
     };
 
+
+
+    // SCROLL LOGIC
+
+    const router = useRouter();
+    const scrollContainerRef = useRef<HTMLDivElement>(null);
+
+    useEffect(() => {
+        const scrollContainer = scrollContainerRef.current;
+
+        if (!scrollContainer) {
+            return; // Exit early if scrollContainer is null
+        }
+
+        let scrollSections: HTMLDivElement[] = [];
+
+        const initializeScrolling = () => {
+            // scrollSections = Array.from(scrollContainer.getElementsByClassName('scroll-section'));
+            scrollSections = Array.from(scrollContainer.getElementsByClassName('scroll-section')) as HTMLDivElement[];
+
+
+            let currentIndex = 0;
+            let scrollInterval: NodeJS.Timeout;
+
+            const scrollToNextSection = () => {
+                currentIndex = (currentIndex + 1) % scrollSections.length;
+                scrollSections[currentIndex].scrollIntoView({ behavior: 'smooth' });
+            };
+
+            scrollInterval = setInterval(scrollToNextSection, 3000);
+
+            const handleScroll = () => {
+                const sectionTops = scrollSections.map(section => section.getBoundingClientRect().top);
+                const scrollContainerTop = scrollContainer.getBoundingClientRect().top;
+                const currentSectionIndex = sectionTops.findIndex(top => top - scrollContainerTop >= 0);
+
+                if (currentSectionIndex !== -1) {
+                    currentIndex = currentSectionIndex;
+                    clearInterval(scrollInterval);
+                    scrollInterval = setInterval(scrollToNextSection, 3000);
+                }
+            };
+
+            scrollContainer.addEventListener('scroll', handleScroll);
+        };
+
+        // Introduce a delay before initializing scrolling
+        const delay = setTimeout(initializeScrolling, 500);
+
+        return () => {
+            clearTimeout(delay);
+        };
+    }, []);
 
 
 
@@ -217,8 +256,8 @@ const Home: React.FC = () => {
                   </div>
               </section>
 
-              {items.map((item, index) => (
-                  <section key={item.id} id="first-section" className="scroll-section">
+              {(items as any[] || []).map((item, index) => (
+                  <section key={item?.id ?? index} id="first-section" className="scroll-section">
                       <div className="patentItem">
                           <div className="left-block">
                               <div className="content-container">
@@ -241,20 +280,30 @@ const Home: React.FC = () => {
                               {/*<Link href={`/patents/${slugify(item.attributes.Title)}-${item.id}`}>*/}
                               {/*    Learn More*/}
                               {/*</Link>*/}
-                              <Link href={`/patents/${slugify(item.attributes.Title)}-${item.attributes.urlSlug}`}>
-                                  Learn More
-                              </Link>
+                              {/*<Link href={`/patents/${slugify(item.attributes.Title)}-${item.attributes.urlSlug}`}>*/}
+                              {/*    Learn More*/}
+                              {/*</Link>*/}
                               {/*<Link href="/patents/[slug]" as="/patent/test-title">*/}
                               {/*    learn more*/}
                               {/*</Link>*/}
+                              {/*<Link href="/patents/slug" as={`/patents/${encodeURIComponent(item.attributes.Title)}`} className="learn-more">*/}
+                              {/*    Learn More*/}
+                              {/*</Link>*/}
+
+
+                              <Link className="learn-more" href={`/patents/${item.attributes.urlSlug}`}>
+                                  LEARN MORE
+                              </Link>
+
                           </div>
                           <div className="right-block">
-                              {item.attributes.MainImage?.data && (
-                                  <img
-                                      src={getFullImageUrl(item.attributes.MainImage.data.attributes.url)}
-                                      alt="Main Image"
-                                  />
-                              )}
+                              {/*{item.attributes.MainImage?.data && (*/}
+                              {/*    <img*/}
+                              {/*        src={getFullImageUrl(item.attributes.MainImage.data.attributes.url)}*/}
+                              {/*        alt="Main Image"*/}
+                              {/*    />*/}
+                              {/*)}*/}
+                              <img src="/images/patent-img.png"/>
                           </div>
                       </div>
                   </section>

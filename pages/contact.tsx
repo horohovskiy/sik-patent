@@ -1,6 +1,7 @@
 import React from "react";
 import Head from "next/head";
 import Header from "@/components/header";
+import Footer from "@/components/footer";
 
 const Contact: React.FC = () => {
     return (
@@ -101,6 +102,8 @@ const Contact: React.FC = () => {
 
 
             </div>
+
+            <Footer/>
 
         </div>
 
