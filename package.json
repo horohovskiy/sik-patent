@@ -24,7 +24,6 @@
     "react-markdown": "^8.0.7",
     "react-scroll-snap": "^1.0.0",
     "sass": "^1.62.1",
-    "strapi": "^3.6.11",
     "typescript": "5.0.4"
   }
 }
