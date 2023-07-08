@@ -1,8 +1,8 @@
 import React from "react";
 import Head from "next/head";
-import Header from "@/components/header";
+import Header from "../components/header";
 import Link from "next/link";
-import Footer from "@/components/footer";
+import Footer from "../components/footer";
 
 const Crafts: React.FC = () => {
     return (
