@@ -7,7 +7,7 @@ import { useRouter } from "next/router";
 import NextNProgress from "nextjs-progressbar";
 import {NextPage} from "next";
 import axios from "axios";
-import Header from "../components/header";
+import Header from "./../components/header";
 
 import React, { useEffect, useRef, useState } from 'react';
 
