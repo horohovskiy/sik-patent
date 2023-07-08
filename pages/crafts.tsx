@@ -30,9 +30,9 @@ const Crafts: React.FC = () => {
                         <div className="service-block">
 
                             <h1>
-                                All services<br/>
+                                All <span>services</span><br/>
                                 you need<br/>
-                                for your Ip
+                                for your <span>Ip</span>
                             </h1>
 
                             <p>
